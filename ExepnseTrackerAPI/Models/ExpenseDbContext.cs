@@ -25,14 +25,12 @@ namespace ExepnseTrackerAPI.Models
             modelBuilder.Entity<TblExpenseCategory>()
                 .HasKey(c => c.CategoryID);
 
-            // Similarly, ensure other entities have their primary keys defined
             modelBuilder.Entity<TblUser>()
                 .HasKey(u => u.UserId);
 
             modelBuilder.Entity<TblExpenseLists>()
                 .HasKey(e => e.ExpenseID);
 
-            // Add any other Fluent API configurations as needed
         }
 
     }

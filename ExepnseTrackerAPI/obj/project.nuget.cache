@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "BDJqbOlXVqNAJU5yqGUx85udNoXWDghcBb+XGQsWYO4JguEiO7P8nbAv53zjBPHmBGJke8KbAzVBI62u22qbMg==",
+  "dgSpecHash": "iEoY/2v0jNNxirsk+pkSuq5tIctC4eugmOMDfe7dfQgFa2RQrk2b4jgmvEeYSbb3b9VhBnVfVKQ4rN31mlZfrQ==",
   "success": true,
-  "projectFilePath": "C:\\GitHub Projects\\MyProject\\ExepnseTrackerAPI\\ExepnseTrackerAPI\\ExepnseTrackerAPI.csproj",
+  "projectFilePath": "C:\\GitHub Projects\\MyProject\\ExepnseTrackerAPI\\ExpenseTracekrAPI\\ExepnseTrackerAPI\\ExepnseTrackerAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\haymhw\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\haymhw\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\6.0.27\\microsoft.aspnetcore.jsonpatch.6.0.27.nupkg.sha512",

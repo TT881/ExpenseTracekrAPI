@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 [ApiController]
 [Route("api/[controller]")]
-public class UserController : ControllerBase
+public class UserController  : ControllerBase
 {
     private readonly ClsUser _clsUser;
 
@@ -38,4 +38,38 @@ public class UserController : ControllerBase
         var users = await _clsUser.GetUsersAsync();
         return Ok(users);
     }
+
+    [HttpPost("ValidateUser")]
+    public async Task<ActionResult> ValidateUser(UserCredentials user)
+    {
+        try
+        {
+            if(String.IsNullOrEmpty(user.username) && String.IsNullOrEmpty(user.password))
+            {
+                throw new ArgumentNullException();
+            }
+            else
+            {
+                var result =  _clsUser.ValidateUser(user.username, user.password);
+                return Ok(result);
+            }
+        }
+        catch (ArgumentNullException)
+        {
+            return BadRequest("User data is required");
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Internal server error: {ex.Message}");
+        }
+    }
 }
+
+public class UserCredentials
+{
+    public string username { get; set; }
+    public string password { get; set; }
+}
+
+
+

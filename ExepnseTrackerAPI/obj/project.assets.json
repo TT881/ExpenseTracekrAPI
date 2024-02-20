@@ -2424,11 +2424,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\GitHub Projects\\MyProject\\ExepnseTrackerAPI\\ExepnseTrackerAPI\\ExepnseTrackerAPI.csproj",
+      "projectUniqueName": "C:\\GitHub Projects\\MyProject\\ExepnseTrackerAPI\\ExpenseTracekrAPI\\ExepnseTrackerAPI\\ExepnseTrackerAPI.csproj",
       "projectName": "ExepnseTrackerAPI",
-      "projectPath": "C:\\GitHub Projects\\MyProject\\ExepnseTrackerAPI\\ExepnseTrackerAPI\\ExepnseTrackerAPI.csproj",
+      "projectPath": "C:\\GitHub Projects\\MyProject\\ExepnseTrackerAPI\\ExpenseTracekrAPI\\ExepnseTrackerAPI\\ExepnseTrackerAPI.csproj",
       "packagesPath": "C:\\Users\\haymhw\\.nuget\\packages\\",
-      "outputPath": "C:\\GitHub Projects\\MyProject\\ExepnseTrackerAPI\\ExepnseTrackerAPI\\obj\\",
+      "outputPath": "C:\\GitHub Projects\\MyProject\\ExepnseTrackerAPI\\ExpenseTracekrAPI\\ExepnseTrackerAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
