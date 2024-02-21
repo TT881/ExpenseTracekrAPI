@@ -1,12 +1,10 @@
-﻿using ExepnseTrackerAPI.Models;
+﻿using ExepnseTrackerAPI.Class;
+using ExepnseTrackerAPI.Models;
 using ExepnseTrackerAPI.Models.Domains;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+using Serilog;
 
 namespace ExepnseTrackerAPI.Services
 {
@@ -19,18 +17,18 @@ namespace ExepnseTrackerAPI.Services
             _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
         }
 
-        public async Task<IActionResult> AddUserAsync(TblUser user)
-        {
-            if (user == null)
-            {
-                throw new ArgumentNullException(nameof(user));
-            }
+        //public async Task<IActionResult> AddUserAsync(TblUser user)
+        //{
+        //    if (user == null)
+        //    {
+        //        throw new ArgumentNullException(nameof(user));
+        //    }
 
-            await _dbContext.TblUser.AddAsync(user);
-            await _dbContext.SaveChangesAsync();
+        //    await _dbContext.TblUser.AddAsync(user);
+        //    await _dbContext.SaveChangesAsync();
 
-            return new OkObjectResult(user);
-        }
+        //    return new OkObjectResult(user);
+        //}
 
         public async Task<List<TblUser>> GetUsersAsync()
         {
@@ -65,6 +63,39 @@ namespace ExepnseTrackerAPI.Services
             {
                 return ex.Message; 
             }
+        }
+
+        public ErrorResult AddUser(string name, string password)
+        {
+            ErrorResult res = new ErrorResult();
+            try
+            {
+                var count = 0; 
+                var checkname = _dbContext.TblUser.Where(user=> user.Name.ToLower() == name.ToLower()).FirstOrDefault();
+                if(checkname != null)
+                {
+                    res.warningmessage = "Same username already exists,Please try again!";
+                }
+                else
+                {
+                    _dbContext.TblUser.Add(new TblUser
+                    {
+                        Name = name,
+                        Password = password,
+                        CreatedOn = DateTime.Now,
+                    });
+                    count = _dbContext.SaveChanges();
+                    if (count > 0)
+                    {
+                        res.success = "Successfully added!";
+                    }
+                }              
+            }catch(Exception ex)
+            {
+                Log.Error(ex.Message); 
+                res.errormessage= ex.Message;
+            }
+            return res;
         }
     }
 }
