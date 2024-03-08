@@ -49,12 +49,12 @@ namespace ExepnseTrackerAPI.Services
                                   where user.Name == check.Name && user.Password == check.Password
                                   select new
                                   {
-                                      user.Name,
-                                      user.UserId,
-                                  }).ToList();
+                                      Name = user.Name,
+                                      UserId = user.UserId,
+                                  }).ToList().Distinct();
                     if (result != null)
                     {
-                        json = JsonConvert.SerializeObject(result.ToList(), Formatting.Indented);
+                        json = JsonConvert.SerializeObject(result, Formatting.Indented);
                     } 
                 }
                 return json;
