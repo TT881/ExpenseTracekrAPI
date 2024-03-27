@@ -1,24 +1,31 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ExepnseTrackerAPI.Models.Domains
 {
     [Table("tbl_ExpenseLists")]
     public class TblExpenseLists
     {
+        
         public int ExpenseID { get; set; }
 
-        public int UserID { get; set; }   //Fk 
+        [ForeignKey("TblUser")] // This attribute is optional if you follow EF conventions
+        public int UserID { get; set; }   // FK 
 
-        public int CategoryID { get; set; }  //Fk 
+        [ForeignKey("TblExpenseCategory")] // This attribute is optional if you follow EF conventions
+        public int CategoryID { get; set; }  // FK 
 
-        public decimal Amount { get; set; }  
+        public decimal Amount { get; set; }
 
-        public string? Remarks {  get; set; }   
+        public string? Remarks { get; set; }
 
         public DateTime ExpenseDate { get; set; }
 
-       // public virtual TblUser TblUser { get; set; } = null!;
+        [JsonIgnore]
+        public virtual TblUser TblUser { get; set; } = null!;
 
-       // public virtual TblExpenseCategory TblExpenseCategory { get; set;} = null!;
+        [JsonIgnore]
+        public virtual TblExpenseCategory TblExpenseCategory { get; set; } = null!; 
     }
+
 }

@@ -41,6 +41,8 @@ namespace ExpenseTrackerAPI
 
             // Register ClsUser as a scoped service
             services.AddScoped<ClsUser>();
+            services.AddScoped<ExpenseService>();
+            services.AddScoped<ClsUIColumnConfig>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

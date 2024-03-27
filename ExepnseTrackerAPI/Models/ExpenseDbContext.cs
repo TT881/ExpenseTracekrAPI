@@ -17,6 +17,10 @@ namespace ExepnseTrackerAPI.Models
 
         public virtual DbSet<TblExpenseLists> TblExpenseLists { get; set; } = null!;
 
+        public virtual DbSet<TblUIColumnConfig> TblUIColumnConfig { get; set; } = null!;   
+
+        public virtual DbSet<TblUITableConfig> TblUITableConfig { get; set; } = null!;
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -31,6 +35,11 @@ namespace ExepnseTrackerAPI.Models
             modelBuilder.Entity<TblExpenseLists>()
                 .HasKey(e => e.ExpenseID);
 
+            modelBuilder.Entity<TblUIColumnConfig>()
+                .HasKey(e => e.ColumnID);
+
+            modelBuilder.Entity<TblUITableConfig>()
+                .HasKey(e => e.UITableID);
         }
 
     }

@@ -7,7 +7,7 @@ namespace ExepnseTrackerAPI.Models.Domains
     {
         public TblUser()
         {
-            //TblExpenseLists = new HashSet<TblExpenseLists>();
+            TblExpenseLists = new HashSet<TblExpenseLists>();
         }
         public int UserId { get; set; } 
         public string? Name { get; set; }
@@ -16,7 +16,7 @@ namespace ExepnseTrackerAPI.Models.Domains
 
         public DateTime? CreatedOn { get; set; }
 
-        //public virtual ICollection<TblExpenseLists> TblExpenseLists { get; set; }
+        public virtual ICollection<TblExpenseLists> TblExpenseLists { get; set; }
 
     }
 }
