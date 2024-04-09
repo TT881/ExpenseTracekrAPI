@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Xml.Linq;
+using Serilog; 
 
 namespace ExepnseTrackerAPI.Services
 {
@@ -59,6 +60,36 @@ namespace ExepnseTrackerAPI.Services
             catch (Exception ex)
             {
                 return ex.Message;
+            }
+        }
+
+        public string? GetExpenseListbyDate(DateTime date , int userID)
+        {
+            try
+            {
+                var query = (from ex in _dbContext.TblExpenseLists
+                             join cat in _dbContext.TblExpenseCategory on
+                             ex.CategoryID equals cat.CategoryID
+                             where ex.ExpenseDate == date && ex.UserID == userID
+                             select new
+                             {
+                                 Category = cat.CategoryName,
+                                 Cost = ex.Amount,
+                                 Date = ex.ExpenseDate,
+                             }).ToList(); 
+                if(query.Count > 0)
+                {
+                    return JsonConvert.SerializeObject(query, Formatting.Indented);
+                }
+                else
+                {
+                    return null; 
+                }  
+            }
+            catch(Exception ex)
+            {
+                Log.Error(ex.Message);
+                return ex.Message; 
             }
         }
     }

@@ -25,7 +25,12 @@ namespace ExepnseTrackerAPI.Controllers
         public string GetExpenseCategory()
         {
             return _expCtrl.GetExpenseCategory();
-        } 
+        }
 
+        [HttpGet("GetExpenseListbyDate")]
+        public string? GetExpenseListbyDate(DateTime date, int userID)
+        {
+            return _expCtrl.GetExpenseListbyDate(date, userID); 
+        }
     }
 }
